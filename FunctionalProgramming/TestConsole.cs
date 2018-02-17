@@ -1,8 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
-using FluentAssertions;
-using Xunit;
 
 namespace FunctionalProgramming
 {
@@ -17,7 +14,7 @@ namespace FunctionalProgramming
             Console.SetOut(TextWriter);
         }
 
-        public readonly TextWriter TextWriter;
+        private readonly TextWriter TextWriter;
         
         public static implicit operator string(TestConsole testConsole)
         {
@@ -27,26 +24,6 @@ namespace FunctionalProgramming
         public void Dispose()
         {
             Console.SetOut(_originalOut);
-        }
-    }
-
-
-    public class Client
-    {
-        [Fact]
-        public void should_calculate_execution_time()
-        {
-            using (var t = new TestConsole())
-            {
-                PerformanceMonitor.Time("some op", () =>
-                {
-                    Thread.Sleep(300);
-                    return 100;
-                });
-
-                string result = t;
-                result.Should().Contain("some op took 300ms");
-            }
         }
     }
 }

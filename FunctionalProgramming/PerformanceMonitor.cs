@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-
+using Unit = System.ValueTuple;
 namespace FunctionalProgramming
 {
     public class PerformanceMonitor : IDisposable
@@ -13,6 +13,12 @@ namespace FunctionalProgramming
             _stopWatch.Start();
         }
 
+        public static Unit Time(string op, Action f)
+        {
+            var func = f.ToFunc();
+            return Time<Unit>(op, func);
+        }
+        
         public static T Time<T>(string op, Func<T> f)
         {
             using (var monitor = new PerformanceMonitor())
