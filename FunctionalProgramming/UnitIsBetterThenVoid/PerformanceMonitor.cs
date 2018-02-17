@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Unit = System.ValueTuple;
-namespace FunctionalProgramming
+namespace FunctionalProgramming.UnitIsBetterThenVoid
 {
     public class PerformanceMonitor : IDisposable
     {

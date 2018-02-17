@@ -3,7 +3,7 @@ using System.Threading;
 using FluentAssertions;
 using Xunit;
 
-namespace FunctionalProgramming
+namespace FunctionalProgramming.UnitIsBetterThenVoid
 {
     public class PerformanceMonitorTest
     {

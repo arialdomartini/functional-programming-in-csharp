@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace FunctionalProgramming
+namespace FunctionalProgramming.UnitIsBetterThenVoid
 {
     public class TestConsole : IDisposable
     {
