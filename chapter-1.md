@@ -134,5 +134,5 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
   * (see [code sample](FunctionalProgramming/HighOrderFunctions/PredicateFactory.cs))
   
 ### High-Order Functions as a means to avoid duplication
-* Similar to Decorator Pattern
-(see [code sample](FunctionalProgramming/HighOrderFunctions/Decorator.cs))
+* Similar to Decorator Pattern (see [code sample](FunctionalProgramming/HighOrderFunctions/Decorator.cs))
+* Implementation of `using` as a High-Order Function ((see [code sample](FunctionalProgramming/HighOrderFunctions/Using.cs)))
