@@ -132,3 +132,7 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
   * change the order of a function's parameters (see [code sample](FunctionalProgramming/HighOrderFunctions/ChangeParametersOrder.cs))
 * Functions that create other functions (function factories)
   * (see [code sample](FunctionalProgramming/HighOrderFunctions/PredicateFactory.cs))
+  
+### High-Order Functions as a means to avoid duplication
+* Similar to Decorator Pattern
+(see [code sample](FunctionalProgramming/HighOrderFunctions/Decorator.cs))
