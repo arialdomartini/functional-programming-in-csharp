@@ -33,10 +33,28 @@ triples // => [3, 6, 9]
       * Separation of concerns
       * Layering: building high level components on top of low level components, which in turn have no dependency on the high level ones
       * Loose coupling: changes on a component should not affect components that depend on it
-    * Escaping the tar tip
+    * Out of the tar tip
       * "The classical ways to approach the difficulty of state include object oriented programming which tightly couples state together with related be haviour, and functional programming which — in its pure form — eschews state and side-effects all together."
       * "These approaches each suffer from various (and differing) problems when applied to traditional large-scale systems."
+    * C# 
+      * shortcomings:
+        * everything is mutable by default: it doesn't discourage in-place updates
+        * language support for immutable data type is poor
+      * Benefits
+        * LINQ is a functional
+          * 'Notice how Where, OrderBy, and Select all take functions as arguments and don’t mutate the given IEnumerable, but return a new IEnumerable instead, illustrating both tenets of FP you saw earlier.'
+          * 'On the other hand, when working with other types, C# programmers generally stick to the imperative style of using flow-control statements to express the program’s intended behavior'
+          
+          
       
-      
-  
+
+## Functional features of C#
+
+* 
+* Most of the functional features (see [code sample](FunctionalProgramming/FunctionalFeatures/Circle.cs)) has been introduced in C# 3. C# 6 and 7 introduced better syntax, but generally not new features
+* Author's preference:
+  * He always tries to use expression bodies
+  * If possible, functions are static
+    * 'In FP, we prefer functions whose behavior relies only on their input arguments because we can reason about and test these functions in isolation (contrast this with instance methods, whose implementation typically interacts with instance variables). These functions are implemented as static methods in C#, so a functional library in C# will consist mainly of static methods.'
+    
 
