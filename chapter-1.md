@@ -121,6 +121,12 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
 
 ## High-order functions
 * 'Some HOFs take other functions as arguments and invoke them in order to do their work, somewhat like a company may subcontract some of its work to another company.'
-  * Is it a form of Dependency Injection? (**discuss**)
+  * Is it a form of Dependency Injection? It is for sure a form of Separation of Concern (**discuss**)
     * 'List.Sort, when called with a Comparison delegate, is a method that says: “OK, I’ll sort myself, as long as you tell me how to compare any two elements that I contain.” Sort does the job of sorting, but the caller can decide what logic to use for comparing. Similarly, Where does the job of filtering, and the caller decides what logic determines whether an element should be included.'
-    
+    * As a next statement the books claims: 'This is perhaps the most common pattern for HOFs, and it’s sometimes referred to as inversion of control: the caller of the HOF decides what to do by supplying a function, and the callee decides when to do it by invoking the given function.'
+    * See (see [Where implementation](FunctionalProgramming/HighOrderFunctions/MyWhere.cs)).
+  * See [Continuation](https://en.wikipedia.org/wiki/Continuation#Implementation) and [Continuation Passing Style](https://en.wikipedia.org/wiki/Continuation-passing_style) (**discuss**)
+
+### Applications of High-Order functions
+* As Adapter Functions
+  * change the order of a function's parameters (see [code sample](FunctionalProgramming/HighOrderFunctions/ChangeParametersOrder.cs))
