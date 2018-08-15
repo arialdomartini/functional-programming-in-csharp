@@ -130,3 +130,5 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
 ### Applications of High-Order functions
 * As Adapter Functions
   * change the order of a function's parameters (see [code sample](FunctionalProgramming/HighOrderFunctions/ChangeParametersOrder.cs))
+* Functions that create other functions (function factories)
+  * (see [code sample](FunctionalProgramming/HighOrderFunctions/PredicateFactory.cs))
