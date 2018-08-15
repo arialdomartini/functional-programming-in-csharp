@@ -136,3 +136,22 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
 ### High-Order Functions as a means to avoid duplication
 * Similar to Decorator Pattern (see [code sample](FunctionalProgramming/HighOrderFunctions/Decorator.cs))
 * Implementation of `using` as a High-Order Function ((see [code sample](FunctionalProgramming/HighOrderFunctions/Using.cs)))
+* Advantages
+  * 'An expression has a value, so the `Using` function can be composed with other functions.' (**discuss**)
+
+
+## High-Order Functions' drawbacks
+
+* Increased Stack use, with a negligible impact on performance
+* Debugging is harder
+
+# Chapter conclusion
+* FP benefits
+  * Clearer code
+    * more expressive, more concise, more testable code
+  * Better support for concurrency
+    * especially because of absence of side effect, immutability and no state mutation
+  * A multi-paradigm approach
+    * 'A multi-paradigm approach— They say that if the only tool you have is a hammer, every problem will look like a nail. Conversely, the more angles from which you can view a given problem, the more likely it is that you’ll find an optimal solution.'
+    * Richer perspective when tackling problems.
+
