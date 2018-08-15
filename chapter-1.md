@@ -118,3 +118,9 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
 * Used in Memoization
 * C# 6 introduced a new initializer syntax (see [code sample](FunctionalProgramming/FunctionalFeatures/DictionarySyntax.cs)))
 
+
+## High-order functions
+* 'Some HOFs take other functions as arguments and invoke them in order to do their work, somewhat like a company may subcontract some of its work to another company.'
+  * Is it a form of Dependency Injection? (**discuss**)
+    * 'List.Sort, when called with a Comparison delegate, is a method that says: “OK, I’ll sort myself, as long as you tell me how to compare any two elements that I contain.” Sort does the job of sorting, but the caller can decide what logic to use for comparing. Similarly, Where does the job of filtering, and the caller decides what logic determines whether an element should be included.'
+    
