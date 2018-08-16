@@ -8,7 +8,4 @@
     <PackageReference Include="xunit" Version="2.4.0-beta.1.build3958" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0-beta.1.build3958" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Chapter1" />
-  </ItemGroup>
 </Project>
