@@ -1,7 +1,8 @@
 ﻿// using static enables unqualified access to static members
-using static System.Math;
 
-namespace FunctionalProgramming.FunctionalFeatures
+using System;
+
+namespace FunctionalProgramming.Chapter1.FunctionalFeatures
 {
     public class Circle
     {
@@ -9,15 +10,15 @@ namespace FunctionalProgramming.FunctionalFeatures
         public double Radius { get; }
         
         // Expression bodied properties
-        public double Circumference => PI * 2 * Radius;
+        public double Circumference => Math.PI * 2 * Radius;
 
         public double Area
         {
             get
             {
                 // local function
-                double Square(double x) => Pow(x, 2);
-                return PI * Square(Radius);
+                double Square(double x) => Math.Pow(x, 2);
+                return Math.PI * Square(Radius);
             }
         }
 

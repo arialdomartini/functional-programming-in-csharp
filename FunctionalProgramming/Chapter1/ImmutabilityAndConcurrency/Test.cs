@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace FunctionalProgramming.ImmutabilityAndConcurrency
+namespace FunctionalProgramming.Chapter1.ImmutabilityAndConcurrency
 {
     public class Test
     {

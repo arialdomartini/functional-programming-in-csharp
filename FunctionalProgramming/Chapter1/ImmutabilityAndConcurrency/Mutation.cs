@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace FunctionalProgramming.ImmutabilityAndConcurrency
+namespace FunctionalProgramming.Chapter1.ImmutabilityAndConcurrency
 {
     public class MutatingStateFromConcurrentProcesses
     {

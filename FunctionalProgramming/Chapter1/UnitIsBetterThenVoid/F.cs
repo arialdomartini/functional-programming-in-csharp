@@ -1,4 +1,4 @@
-﻿namespace FunctionalProgramming.UnitIsBetterThenVoid
+﻿namespace FunctionalProgramming.Chapter1.UnitIsBetterThenVoid
 {
     public class F
     {

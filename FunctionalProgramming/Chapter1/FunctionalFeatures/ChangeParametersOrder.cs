@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace FunctionalProgramming.HighOrderFunctions
+namespace FunctionalProgramming.Chapter1.FunctionalFeatures
 {
     public static class FuncExtensions
     {

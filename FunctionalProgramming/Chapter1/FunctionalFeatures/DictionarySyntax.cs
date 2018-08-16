@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using FluentAssertions;
 using Xunit;
 
-namespace FunctionalProgramming.FunctionalFeatures
+namespace FunctionalProgramming.Chapter1.FunctionalFeatures
 {
     public class DictionarySyntax
     {

@@ -155,3 +155,6 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
     * 'A multi-paradigm approach— They say that if the only tool you have is a hammer, every problem will look like a nail. Conversely, the more angles from which you can view a given problem, the more likely it is that you’ll find an optimal solution.'
     * Richer perspective when tackling problems.
 
+# Exercises
+
+* Write a function that negates a predicate: (see [code sample](FunctionalProgramming/Chapter1/Exercises/NegatePredicate.cs))

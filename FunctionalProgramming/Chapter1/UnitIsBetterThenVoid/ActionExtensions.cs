@@ -1,7 +1,7 @@
 ﻿using System;
 using Unit = System.ValueTuple;
 
-namespace FunctionalProgramming.UnitIsBetterThenVoid
+namespace FunctionalProgramming.Chapter1.UnitIsBetterThenVoid
 {
     public static class ActionExtensions
     {

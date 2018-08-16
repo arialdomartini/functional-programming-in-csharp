@@ -1,9 +1,8 @@
 ﻿using System;
 using FluentAssertions;
-using FunctionalProgramming.HighOrderFunctions;
 using Xunit;
 
-namespace FunctionalProgramming.HighOrderFunctions
+namespace FunctionalProgramming.Chapter1.FunctionalFeatures
 {
     public class FunctionalUsing
     {
