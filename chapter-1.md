@@ -157,4 +157,7 @@ What's the arity of `DayStartingWith`? It seems unary, but actually depends on `
 
 # Exercises
 
-* Write a function that negates a predicate: (see [code sample](FunctionalProgramming/Chapter1/Exercises/NegatePredicate.cs))
+* Write a function that negates a predicate: [solution](FunctionalProgramming/Chapter1/Exercises/NegatePredicate.cs)
+* Write a functional QuickSort that does not modify the original list: [solution](FunctionalProgramming/Chapter1/Exercises/QuickSort.cs)
+* Generalize the QuickSort to work on a `List<T>`: [solution](FunctionalProgramming/Chapter1/Exercises/GenericQuickSort.cs)
+* Write a functional `using` whih takes a factory of the disposable resource: [solution](FunctionalProgramming/Chapter1/Exercises/Using.cs)
