@@ -57,7 +57,7 @@ namespace FunctionalProgramming.Chapter2
         {
             var shoppingList = new List<string> { "coffee beans", "BANANAS", "Dates" };
 
-            var result = FormatBonannosFunctional(shoppingList);
+            var result = FormatBonannosFunctional(shoppingList).AsParallel();
 
             result.Should().BeEquivalentTo(new List<string>{
                 "1. Coffee beans",
@@ -170,13 +170,19 @@ namespace FunctionalProgramming.Chapter2
          
             var elapsedBonanno = 
                 Benchmark(() => FormatBonannosFunctional(list));
+            var elapsedBonannoParallel = 
+                Benchmark(() => FormatBonannosFunctional(list).AsParallel());
             var elapsedFunctional = 
                 Benchmark(() => FormatFunctional(list));
+            var elapsedFunctionalParallel = 
+                Benchmark(() => FormatFunctional(list).AsParallel());
             var elapsedNonFunctional =
-//                Benchmark(() => FormatNonFunctional(list));
-                0;          
+                Benchmark(() => FormatNonFunctional(list));
+
             _outp.WriteLine($"functional: {elapsedFunctional}");
+            _outp.WriteLine($"functional parallel: {elapsedFunctionalParallel}");
             _outp.WriteLine($"Bonanno: {elapsedBonanno}");
+            _outp.WriteLine($"Bonanno Parallel: {elapsedBonannoParallel}");
             _outp.WriteLine($"non-functional: {elapsedNonFunctional}");
         }
 
