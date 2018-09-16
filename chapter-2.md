@@ -38,6 +38,8 @@
 ### Pure functions parallelize well
 * In fact, the functional version of the preceeding exercise get faster than the non-functional one once parallelized.
   * To "parallelize well" means that pure functions are immune to the issues that make concurrency hard.
+  * If we try to parallelize the non-functional version, it yields random, unexpected results
+  * Very interesting the use of `Select` vs `Any`, and the optimization made by the compiler.
   
 ### Types of concurrency
 

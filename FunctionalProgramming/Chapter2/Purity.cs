@@ -60,6 +60,20 @@ namespace FunctionalProgramming.Chapter2
                 "3. Dates"
             });
         }
+        
+        [Fact]
+        public void should_work_with_Any()
+        {
+            var shoppingList = new List<string> { "coffee beans", "BANANAS", "Dates" };
+
+            var result = bad_implementation_with_select_and_side_effects(shoppingList);
+
+            result.Should().BeEquivalentTo(new List<string>{
+                "1. Coffee beans",
+                "2. Bananas",
+                "3. Dates"
+            });
+        }
 
         private IEnumerable<string> FormatNonFunctional(IEnumerable<string> shoppingList)
         {
@@ -96,7 +110,7 @@ namespace FunctionalProgramming.Chapter2
             
             return result;
         }
-        private IEnumerable<string> WithSelectFormatNonFunctional2_not_working(IEnumerable<string> shoppingList)
+        private IEnumerable<string> bad_implementation_with_select_and_side_effects(IEnumerable<string> shoppingList)
         {
             var index = 1;
             var result = new List<string>();
@@ -104,14 +118,22 @@ namespace FunctionalProgramming.Chapter2
             var list = shoppingList.ToList();
             _outp.WriteLine(list.Count.ToString());
 
-            list.Select(item =>
+            // This is a very wrong implementation, as it relies on
+            // side effect. "Any" is actually meant to be used with
+            // pure functions.
+            var enumerable = list.Select(item =>
             {
                 _outp.WriteLine(item);
                 result.Add(item.Capitalize().PrependNumeration(index));
                 index = index + 1;
-                return "unused";
+                return index.ToString();
             });
-            
+
+
+            // Commenting this statment makes the previous Select to be
+            // removed!
+            enumerable.ToList().ForEach(item =>
+                _outp.WriteLine($"I got {item}"));
             return result;
         }
 
