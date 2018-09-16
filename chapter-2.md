@@ -13,10 +13,13 @@
 ### Pure Functions
 * Pure functions
   * They are deterministic (they always return the same output given the same input)
-  * Execution order does not matter
-  * They are parallelizable
-  * Lazy evaluation can be leveraged
-  * They are referencially transparent, and they can be memoized (cache the result, so the computation is performed only once)
+    * Consequently they are
+      * Easy to test
+      * Easy to reason about
+      * Execution order does not matter
+        * They are parallelizable
+        * Lazy evaluation can be leveraged
+        * They are referencially transparent, and they can be memoized (cache the result, so the computation is performed only once)
 * Impurity is unavoidable
   * FP promotes isolating the code that performs side effects
     * Pure core, impure shell (**discuss**)
@@ -25,9 +28,23 @@
 #### Strategies for managing side effects
 * Isolate I/O effecs
 * Avoid mutating arguments
-  * 'The reason why this is such a terrible idea is that the behavior of the method is now tightly coupled with that of the caller: the caller relies on the method to perform its side effect, and the callee relies on the caller to initialize the list. As such, both methods must be aware of the implementation details of the other, making it impossible to reason about the methods in isolation.'
+  * 'The reason why this is such a terrible idea is that the behavior of the method is now tightly coupled with that of the caller: the caller relies on the method to perform its side effect, and the callee relies on the caller to initialize the list. As such, both methods must be aware of the implementation details of the other, making it impossible to reason about the methods in isolation.**
   * It is always possible to structure a method's code  so that it does not mutate its arguments
   
 ## Purity and concurrency
+* '*Why do you have to explicitly instruct the runtime to parallelize the operation? Why can’t it just figure out that it’s a good idea to parallelize the operation, just like it figures out when it’s a good time to run the garbage collector?*' (**discuss**) 
+* Surprisingly, the functional version is slowr (**discuss**)
 
+### Pure functions parallelize well
+* In fact, the functional version of the preceeding exercise get faster than the non-functional one once parallelized.
+  * To "parallelize well" means that pure functions are immune to the issues that make concurrency hard.
   
+### Types of concurrency
+
+* Asynchrony: non-blocking operations
+* Parallelism: hardware, like singing in the shower
+* Multi-threading: software, like chatting with multiple people
+
+In all cases, the order is not granted.
+
+
