@@ -156,10 +156,16 @@ namespace FunctionalProgramming.Chapter2
             return result;
         }
 
-        private IEnumerable<string> FormatFunctional(List<string> shoppingList) => 
+        private IEnumerable<string> FormatFunctional(IReadOnlyCollection<string> shoppingList) => 
             shoppingList
             .Select(StringExtensions.Capitalize)
-            .Zip(Range(1, shoppingList.Count), (i, j) => $"{i}. {j}");
+            .Zip(ParallelEnumerable.Range(1, shoppingList.Count), (i, j) => $"{i}. {j}");
+
+        
+        private IEnumerable<string> FormatFunctionalParallel(ParallelQuery<string> shoppingList) => 
+            shoppingList
+            .Select(StringExtensions.Capitalize)
+            .Zip(ParallelEnumerable.Range(1, shoppingList.Count()), (i, j) => $"{i}. {j}");
 
         
 
