@@ -49,4 +49,6 @@
 
 In all cases, the order is not granted.
 
+### How to make things parallelizable
 
+* Avoid state mutation: never user shared state; this removes the problem at the source.
