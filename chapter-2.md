@@ -80,7 +80,6 @@ will be equivalent to
 ```csharp
 class Point
 {
-q
     private int x;
     private int y;
 
