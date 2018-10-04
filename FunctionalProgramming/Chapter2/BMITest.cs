@@ -17,7 +17,7 @@ namespace FunctionalProgramming.Chapter2
         [InlineData(185, 10, "non healthy")]
         public void should_evaluate_bmi(decimal weight, decimal height, string expected)
         {
-            var result = BMI.Evaluate(BMI.Calculate, weight, height);
+            var result = BMI.Evaluate(BMI.Calculate)(weight, height);
 
             result.Should().Be(expected);
         }
