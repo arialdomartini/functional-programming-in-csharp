@@ -37,50 +37,27 @@ namespace FunctionalProgramming.Chapter3
 
     public static class RiskProfile
     {
-        internal static Risk Calculate(Age age) => age > 60 ? Risk.Low : Risk.High;
+        internal static Risk Calculate(Age age, Gender gender) => 
+            age > (gender == Gender.Male? 60 : 62 ) ? Risk.High : Risk.Low;
     }
-    
+
     public class RiskTest
     {
         [Theory]
-        [InlineData(20, Risk.Low)]
-        [InlineData(60, Risk.Low)]
-        [InlineData(61, Risk.High)]
-        public void should_(int age, Risk risk)
+        [InlineData(20, Gender.Male, Risk.Low)]
+        [InlineData(60, Gender.Male, Risk.Low)]
+        [InlineData(61, Gender.Male, Risk.High)]
+
+        [InlineData(20, Gender.Female, Risk.Low)]
+        [InlineData(60, Gender.Female, Risk.Low)]
+        [InlineData(61, Gender.Female, Risk.Low)]
+        [InlineData(62, Gender.Female, Risk.Low)]
+        [InlineData(63, Gender.Female, Risk.High)]
+        public void should_(int age, Gender gender, Risk risk)
         {
-            var result = RiskProfile.Calculate(age);
+            var result = RiskProfile.Calculate(age, gender);
 
             result.Should().Be(risk);
-        }
-    }
-
-    public class AgeTest
-    {
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(10)]
-        [InlineData(119)]
-        [InlineData(120)]
-        public void should_allow_valid_ages(int value)
-        {
-            Age age = value;
-
-            age.Value.Should().Be(value);
-        }
-        
-        [Theory]
-        [InlineData(-1)]
-        [InlineData(121)]
-        [InlineData(1100)]
-        [InlineData(-20)]
-        public void should_not_allow_invalid_ages(int value)
-        {
-            Age age = null;
-            
-            var action = true.Invoking(_ => age = value);
-
-            action.Should().Throw<Exception>();
         }
     }
 }
