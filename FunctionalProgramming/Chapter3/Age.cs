@@ -37,10 +37,19 @@ namespace FunctionalProgramming.Chapter3
 
     public static class RiskProfile
     {
-        internal static Risk Calculate(Age age, Gender gender) => 
-            age > (gender == Gender.Male? 60 : 62 ) ? Risk.High : Risk.Low;
+        internal static Risk Calculate(HealthData healthData) => 
+            healthData.Age > Threshold(healthData) ? Risk.High : Risk.Low;
+
+        private static int Threshold(HealthData healthData) => 
+            healthData.Gender == Gender.Male ? 60 : 62;
     }
 
+    public struct HealthData
+    {
+        public Age Age;
+        public Gender Gender;
+    }
+    
     public class RiskTest
     {
         [Theory]
@@ -55,7 +64,12 @@ namespace FunctionalProgramming.Chapter3
         [InlineData(63, Gender.Female, Risk.High)]
         public void should_(int age, Gender gender, Risk risk)
         {
-            var result = RiskProfile.Calculate(age, gender);
+            var healthData = new HealthData{ 
+                Age = age, 
+                Gender = gender
+            };
+            
+            var result = RiskProfile.Calculate(healthData);
 
             result.Should().Be(risk);
         }
