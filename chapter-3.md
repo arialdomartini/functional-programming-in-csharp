@@ -97,4 +97,8 @@ https://stackoverflow.com/questions/5450748/what-is-system-void#5450765
   * Unit is not void: it is an empty element that exists with 1 possible value. The set Unit contains **one** value, not no values! (**discuss**)
   * "The empty tuple has no members, so it can only have one possible value"
   * Avoid implementing a custom `Unit` and end up with incompatible libraries. Better to use `using Unit = System.ValueTuple;`
-  
+  * `Unit` is useful to have gain consistency in dealing with Funcs and Actions.
+
+## Modeling the possible absence of data with `Option`
+
+* `NameValueCollection` and `Dictionary<string, T>` are inconsistent in the way they deal with absence of value: `NameValueCollection` returns `null` (which is not even the same type!), while `Dictionary` throws an excetion
