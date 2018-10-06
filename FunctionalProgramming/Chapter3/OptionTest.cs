@@ -1,44 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using FluentAssertions;
-using NSubstitute.Core;
 using Xunit;
+using static Xunit.Assert;
 
 namespace FunctionalProgramming.Chapter3
 {
+    using static F;
+
+    public class Option<T>
+    {
+        public static Option<T> Nothing() =>
+            new Option<T> {IsLeft = true};
+
+
+        private bool IsLeft { get; set; }
+
+        public void Match(Action left, Action<T> right)
+        {
+            if (IsLeft) left();
+            else right(Value);
+        }
+    
+        public static Option<T> Some(T value) => 
+            new Option<T> {Value = value};
+
+        private T Value { get; set; }
+    }
+    
+    public static partial class F
+    {
+        public static Option<T> Nothing<T>() => 
+            Option<T>.Nothing();
+
+        public static Option<T> Some<T>(T value) => 
+            Option<T>.Some(value);
+    }
+    
     public class OptionTest
     {
         [Fact]
-        public void null_is_not_a_string()
+        public void match_Nothing_case()
         {
-            string s = null;
+            var nothing = Nothing<string>();
 
-            (s is string).Should().BeFalse();
+            nothing.Match(
+                () => { True(true); }, 
+                r => { True(false);});
         }
         
         [Fact]
-        public void NameValueCollection_returns_null()
+        public void match_Some_case()
         {
-            var empty = new NameValueCollection();
-            
-            var green = empty["green"];
-            
-            green.Should().BeNull();
-        }
-        
-        [Fact]
-        public void Dictionary_throws_expection()
-        {
-            var empty = new Dictionary<string, string>();
+            var something = Some("something");
 
-            var action = empty.Invoking(e =>
-            {
-                var green = e["green"];
-            });
-
-            action.Should().Throw<KeyNotFoundException>();
+            something.Match(
+                () => { True(false); },
+                r => { r.Should().Be("something");});
         }
     }
-
 }

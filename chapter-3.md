@@ -102,3 +102,14 @@ https://stackoverflow.com/questions/5450748/what-is-system-void#5450765
 ## Modeling the possible absence of data with `Option`
 
 * `NameValueCollection` and `Dictionary<string, T>` are inconsistent in the way they deal with absence of value: `NameValueCollection` returns `null` (which is not even the same type!), while `Dictionary` throws an excetion
+
+
+```haskell
+data Maybe a = Empty | Some a
+```
+
+```csharp
+Option<T> = None | Some(T)
+```
+
+`Option<T>` can be in one of two states;
