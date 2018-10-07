@@ -115,3 +115,10 @@ Option<T> = None | Some(T)
 `Option<T>` can be in one of two states;
 
 * "For now, you can think of None as a replacement for null, and Match as a replacement for a null-check."
+
+* Option could be implemented defining an interface `Option<T>` and let it implement by `None` and `Some<T>`. But this is suboptimal
+  * because:
+    *  `None` doesn’t need a type parameter `T`, and it can’t therefore implement the generic interface Option<T>. It would be nice if None could be treated as an Option<T> regardless of what type the type parameter T is eventually assigned, but this isn’t supported by C#’s type system.
+    * It should be impossible to implement further classes implementing `Option<T>`
+  * Therefore, instead of having that interface, we could play with implicit casting operators (**discuss**)
+
