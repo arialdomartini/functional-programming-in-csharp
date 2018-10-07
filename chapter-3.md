@@ -113,3 +113,5 @@ Option<T> = None | Some(T)
 ```
 
 `Option<T>` can be in one of two states;
+
+* "For now, you can think of None as a replacement for null, and Match as a replacement for a null-check."

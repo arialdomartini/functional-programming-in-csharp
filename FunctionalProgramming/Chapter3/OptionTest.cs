@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO.MemoryMappedFiles;
+using System.Net.NetworkInformation;
+using System.Runtime.InteropServices.WindowsRuntime;
 using FluentAssertions;
 using Xunit;
 using static Xunit.Assert;
@@ -7,55 +10,79 @@ namespace FunctionalProgramming.Chapter3
 {
     using static F;
 
-    public class Option<T>
+    public struct None
     {
-        public static Option<T> Nothing() =>
-            new Option<T> {IsLeft = true};
-
-
-        private bool IsLeft { get; set; }
-
-        public void Match(Action left, Action<T> right)
+    }
+    
+    public struct Some<T>
+    {
+        public Some(T value)
         {
-            if (IsLeft) left();
-            else right(Value);
+            Value = value;
+        }
+
+        internal T Value { get; }
+    }
+
+    
+    public struct Option<T>
+    {
+        private readonly bool _isSomething;
+
+        private Option(T value)
+        {
+            Value = value;
+            _isSomething = true;
         }
     
-        public static Option<T> Some(T value) => 
-            new Option<T> {Value = value};
+        // Used in
+        //     Option<string> none = new None();
+        public static implicit operator Option<T>(None _) => 
+            new Option<T>();
 
-        private T Value { get; set; }
+        // Used in
+        //     Option<string> some = new Some("something")
+        public static implicit operator Option<T>(Some<T> some) => 
+            new Option<T>(some.Value);
+        
+        // Used in
+        //     Option<string> some = "something"
+        public static implicit operator Option<T>(T value) => 
+            new Option<T>(value);
+
+        private T Value { get; }
+        
+        public TR Match<TR>(Func<TR> left, Func<T, TR> right) => 
+            _isSomething ? right(Value) : left();
     }
     
-    public static partial class F
-    {
-        public static Option<T> Nothing<T>() => 
-            Option<T>.Nothing();
-
-        public static Option<T> Some<T>(T value) => 
-            Option<T>.Some(value);
-    }
     
     public class OptionTest
     {
         [Fact]
         public void match_Nothing_case()
         {
-            var nothing = Nothing<string>();
+            Option<string> nothing = new None();
 
-            nothing.Match(
-                () => { True(true); }, 
-                r => { True(false);});
+            var result = nothing.Match(
+                () => true, 
+                r => false
+            );
+
+            result.Should().Be(true);
         }
         
         [Fact]
         public void match_Some_case()
         {
-            var something = Some("something");
+            Option<string> something = "something";
 
-            something.Match(
-                () => { True(false); },
-                r => { r.Should().Be("something");});
+            var result = something.Match(
+                () => -1,
+                r => 42
+            );
+
+            result.Should().Be(42);
         }
     }
 }
