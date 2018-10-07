@@ -122,3 +122,4 @@ Option<T> = None | Some(T)
     * It should be impossible to implement further classes implementing `Option<T>`
   * Therefore, instead of having that interface, we could play with implicit casting operators (**discuss**)
 
+  * The value `isSomething` in Bonanno's implementation can be deleted and replaced with a nullity check on `Value` (**discuss**)

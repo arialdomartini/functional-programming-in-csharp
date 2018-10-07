@@ -1,19 +1,21 @@
 ﻿using System;
-using System.IO.MemoryMappedFiles;
-using System.Net.NetworkInformation;
-using System.Runtime.InteropServices.WindowsRuntime;
 using FluentAssertions;
 using Xunit;
-using static Xunit.Assert;
 
 namespace FunctionalProgramming.Chapter3
 {
     using static F;
 
+    public static partial class F
+    {
+        public static Some<T> Some<T>(T value) => new Some<T>(value);
+        public static None None() => new None();
+    }
+
     public struct None
     {
     }
-    
+
     public struct Some<T>
     {
         public Some(T value)
@@ -24,15 +26,12 @@ namespace FunctionalProgramming.Chapter3
         internal T Value { get; }
     }
 
-    
+
     public struct Option<T>
     {
-        private readonly bool _isSomething;
-
         private Option(T value)
         {
             Value = value;
-            _isSomething = true;
         }
     
         // Used in
@@ -47,13 +46,17 @@ namespace FunctionalProgramming.Chapter3
         
         // Used in
         //     Option<string> some = "something"
-        public static implicit operator Option<T>(T value) => 
-            new Option<T>(value);
+        public static implicit operator Option<T>(T value)
+        {
+            if (value == null)
+                return None();
+            return Some(value);
+        }
 
         private T Value { get; }
         
         public TR Match<TR>(Func<TR> left, Func<T, TR> right) => 
-            _isSomething ? right(Value) : left();
+            Value != null ? right(Value) : left();
     }
     
     
