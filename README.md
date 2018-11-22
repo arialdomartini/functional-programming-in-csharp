@@ -4,4 +4,4 @@ Programming exercises reading Enrico Buonanno's [Functional Programming in C#](h
 
 * [Chapter 1 - Introduction](chapter-1.md)
 * [Chapter 2 - Function purity](chapter-2.md)
-* [Chapter 2 - Designing function signatures and types](chapter-3.md)
+* [Chapter 3 - Designing function signatures and types](chapter-3.md)
