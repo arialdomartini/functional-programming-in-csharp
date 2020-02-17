@@ -29,6 +29,7 @@ actually should be
 ```haskell
 int -> int -> int
 ```
+because of currying.
 
 Similarly:
 
